@@ -653,7 +653,7 @@ Agora que sabemos <b>onde</b> os dados fluem no fluxo de streaming (<i>sources e
 Basicamente a escolha do modo limita o tipo de query que você pode fazer. Por exemplo, se você precisa apenas de operações do tipo <i>map</i>, a API Structured Streaming não irá permitir o modo *complete*, porque isso iria requerer obter todos os dados desde o início do job e reescrever toda a tabela de saída. Esse requisito é proibitivamente caro em termos de recurso. Abaixo uma tabela que resume tipos de operação e algumas situações suportadas para cada modo de saída.
 </div>
 
-![image.png](attachment:image.png)
+![image.png](img/img002.png)
 
 ### Triggers
 
