@@ -23,7 +23,9 @@ from pyspark.sql.types import *
 spark = SparkSession.builder.appName("SparkStreamingExamples").getOrCreate()
 ```
 
-![image.png](attachment:image.png)
+
+
+![image-20200628155443061](img/img001.png)
 
 
 <div style="text-align: justify">
@@ -32,7 +34,7 @@ Em termos simples, seu Dataframe, por exemplo, continua sendo um Dataframe, só 
 ## Fontes de entrada ou *source*
 
 <div style="text-align: justify; padding-top: 10px;">
-    
+
 <p>
     Entenda uma <i>source</i> como "drivers" de <b>leitura</b> de dados, ou <i>reader</i>. Alguns que são disponibilizados hoje:
 </p>
@@ -72,7 +74,7 @@ spark.readStream\
 ### O que é Sink ?
 
 <div style= "padding-top:10px;">
-    
+
 <p style="text-align: justify;">Em tradução livre, "pia". Em termos técnicos(e úteis), sinks são como "drivers" para <b>escrita</b> de dados, ou <i>writers</i>. Alguns que estão disponíveis:
 </p>
 </div>
@@ -176,7 +178,7 @@ df_static.printSchema()
      |-- x: double (nullable = true)
      |-- y: double (nullable = true)
      |-- z: double (nullable = true)
-    
+
 
 
 
@@ -193,7 +195,7 @@ df_static.show(3)
     |1424686735500|1424686733498505625|nexus4_1|   99|nexus4|   g|stand|   0.0078125|-0.017654419| 0.010025024|
     +-------------+-------------------+--------+-----+------+----+-----+------------+------------+------------+
     only showing top 3 rows
-    
+
 
 
 ### Carregando dados no "modo streaming"
@@ -202,7 +204,7 @@ df_static.show(3)
 
 <p>Abaixo, o código configura o streaming, partindo do princípio que Spark executa comandos no modo <i>lazy</i>, ou seja, podemos configurar e até aplicar algumas transformações antes de executar de fato. No caso de streaming, tudo começa a executar depois a partir da invocação do método <b><i>start()</i></b>, como será demonstrado mais adiante.
 </p>
-    
+
 <p>Para a API Structured Streaming, a idéia é manter fluxos de dados, ou seja, entradas e saídas, que correspondam respectivamente, a configurar um <i>reader</i> e um <i>writer</i> para o streaming de dados. No código abaixo, um exemplo de um <i>reader</i> típico. Repare que está disponível a partir da própria sessão do Spark (pyspark.sql.SparkSession). A única diferença é que ao invés de obter a leitura do streaming de dados através da propriedade "read" (como no exemplo utilizado na seção "Carregando dados no modo estático"), usamos <i>readStream</i>.      
 </p>
 </div>
@@ -332,7 +334,7 @@ for x in range(5):
     |stairsdown|749059|
     +----------+------+
     only showing top 3 rows
-    
+
 
 
 ## Transformações em Fluxos
@@ -376,7 +378,7 @@ spark.sql("SELECT * from simple_transform").show(2)
     |stairsup|nexus4|1424687984030|1424687982033901107|
     +--------+------+-------------+-------------------+
     only showing top 2 rows
-    
+
 
 
 
@@ -418,7 +420,7 @@ spark.sql("SELECT * FROM device_counts").show(5)
     | null|  null|-0.00789107648757...|-0.00192346751228...|-6.73493799349196...|
     +-----+------+--------------------+--------------------+--------------------+
     only showing top 5 rows
-    
+
 
 
 
@@ -434,7 +436,7 @@ spark.sql("SELECT * from device_counts where model IS NOT NULL").show(2)
     |stand|nexus4|-4.41379069038206...|5.811279945410626E-4|2.254789355204209...|
     +-----+------+--------------------+--------------------+--------------------+
     only showing top 2 rows
-    
+
 
 
 ### Joins
@@ -467,7 +469,7 @@ df_historicalAgg.show(2)
     |null|nexus4|1.424749002876339...|1.424749919482127...|219276.9663669269|-0.00847688860109...|-7.30455258739187...|0.003090601491419931|
     +----+------+--------------------+--------------------+-----------------+--------------------+--------------------+--------------------+
     only showing top 2 rows
-    
+
 
 
 ### Lendo de sources e escrevendo em sinks
@@ -487,7 +489,7 @@ Como já sabemos, para lidar com streams, temos entradas de dados (<i>source</i>
 <br>
 <div style="text-align: justify">    
 A <b>leitura</b> de dados em um <i>tópico</i> do Kafka é chamada de <i>subscribing</i> (inscrição em tradução livre para o português).
- 
+
 Na leitura, é possível ser mais preciso quanto aos dados que se quer trazer no streaming, incluindo dados de vários tópicos de uma vez. Para isso utiliza-se *assign*, passando os intervalos de dados e os tópicos.
 
 <br>
@@ -519,7 +521,7 @@ Cada linha de uma *source* tem o seguinte esquema(schema):
 * partition: int
 * offset: long
 * timestamp: long
-    
+  
 
 
 ```python
@@ -629,7 +631,7 @@ spark.sql("SELECT * FROM socket_stream").show(5, False)
     |value|
     +-----+
     +-----+
-    
+
 
 
 ### Output Modes
